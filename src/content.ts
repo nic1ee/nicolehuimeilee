@@ -6,7 +6,7 @@ export const person = {
   name: 'Nicole “Nic” Lee',
   shortName: 'Nic Lee',
   email: 'nhlee@mit.edu',
-  linkedin: 'https://linkedin.com/in/nicolehuimeilee',
+  linkedin: 'https://www.linkedin.com/in/nicolehuimeilee/',
   cv: './Nic_Lee_CV.pdf',
   place: 'Cambridge, MA',
   lat: '42.3601° N',
