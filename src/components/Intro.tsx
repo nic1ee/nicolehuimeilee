@@ -3,7 +3,7 @@ import { gsap, finePointer } from '../motion/setup';
 import { useMotion, sel } from '../motion/useMotion';
 import { facts, person } from '../content';
 
-const LINES: { text: string; em?: boolean }[][] = [[{ text: 'Nicole' }], [{ text: 'Huimei' }, { text: 'Lee' }]];
+const LINES: { text: string; em?: boolean }[][] = [[{ text: 'Nicole' }], [{ text: 'Huimei' }], [{ text: 'Lee' }]];
 
 /**
  * Opening. On load the name rises line by line, a hairline draws under it, the facts resolve

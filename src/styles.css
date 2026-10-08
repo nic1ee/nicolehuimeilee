@@ -55,7 +55,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .intro__grid { display: flex; flex-wrap: wrap; gap: 48px clamp(40px, 6vw, 96px); align-items: flex-end; }
 .intro__text { flex: 1 1 520px; min-width: 0; }
 .intro__kicker { margin: 0 0 28px; }
-.intro__name { margin: 0; font-size: clamp(64px, 10vw, 140px); line-height: .9; letter-spacing: -0.025em; }
+.intro__name { margin: 0; font-size: clamp(64px, 9vw, 128px); line-height: .84; letter-spacing: -0.025em; }
 .intro__name .word { display: inline-block; white-space: nowrap; }
 .intro__name .word + .word { margin-left: .22em; }
 .intro__name .em { font-style: italic; color: var(--graphite); }
