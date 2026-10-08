@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Intro from './components/Intro';
 import Bio from './components/Bio';
 import Contact from './components/Contact';
+import { Publications, News } from './components/Listing';
 
 export default function App() {
   useEffect(() => {
@@ -17,6 +18,8 @@ export default function App() {
       <main>
         <Intro />
         <Bio />
+        <Publications />
+        <News />
         <Contact />
       </main>
     </>

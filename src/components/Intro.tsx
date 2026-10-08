@@ -39,7 +39,7 @@ export default function Intro() {
           <dl className="intro__facts">
             {facts.map((f) => (
               <div key={f.label}>
-                <dt className="mono muted">{f.label}</dt>
+                <dt className="mono">{f.label}</dt>
                 <dd>{f.value}</dd>
               </div>
             ))}
