@@ -29,10 +29,13 @@ export function riseRows(root: HTMLElement, selector: string) {
 
 export function riseLines(el: HTMLElement | null) {
   if (!el) return () => undefined;
-  const split = SplitText.create(el, { type: 'lines', mask: 'lines', linesClass: 'ln' });
-  gsap.from(split.lines, {
-    yPercent: 105, duration: 1.2, ease: 'expo.out', stagger: 0.07,
-    scrollTrigger: { trigger: el, start: 'top 82%' },
+  // autoSplit re-splits after webfonts load and on resize, so line breaks always match the real text.
+  const split = SplitText.create(el, {
+    type: 'lines', mask: 'lines', linesClass: 'ln', autoSplit: true,
+    onSplit: (self) => gsap.from(self.lines, {
+      yPercent: 105, duration: 1.2, ease: 'expo.out', stagger: 0.07,
+      scrollTrigger: { trigger: el, start: 'top 82%', once: true },
+    }),
   });
   return () => split.revert();
 }
