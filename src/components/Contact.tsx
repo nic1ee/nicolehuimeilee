@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { gsap } from '../motion/setup';
 import { useMotion, sel } from '../motion/useMotion';
+import { sectionLine, riseRows } from '../motion/reveals';
 import { person } from '../content';
 import { go } from './Header';
 
@@ -13,10 +14,10 @@ export default function Contact() {
   useMotion(ref, (mm, root) => {
     const q = sel(root);
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.from(q('.row'), {
-        clipPath: 'inset(0 100% 0 0)', duration: 1.2, ease: 'expo.out', stagger: 0.1,
-        scrollTrigger: { trigger: root, start: 'top 75%' },
-      });
+      sectionLine(root);
+      riseRows(root, '.row');
+      // Closing: the footer's name settles in last, on a short orange baseline.
+      gsap.from(q('.foot__base'), { scaleX: 0, transformOrigin: 'left center', duration: 1.4, ease: 'expo.inOut', scrollTrigger: { trigger: q('.foot')[0], start: 'top 95%' } });
     });
   });
 
@@ -34,6 +35,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="sec" ref={ref} aria-labelledby="contact-title">
+      <div className="wrap"><div className="sec__line" aria-hidden="true"><i /><b /></div></div>
       <div className="wrap sec__grid">
         <div className="sec__lab">
           <h2 id="contact-title" className="mono">CV &amp; Contact</h2>
@@ -68,6 +70,7 @@ export default function Contact() {
         </ul>
       </div>
       <footer className="wrap foot mono muted">
+        <span className="foot__base" aria-hidden="true" />
         <span>{person.name} · {person.place}</span>
         <a className="tlink" href="#top" onClick={(e) => go(e, '#top')}>Back to top ↑</a>
       </footer>

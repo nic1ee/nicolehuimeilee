@@ -1,12 +1,10 @@
 import { person } from '../content';
+import { scrollToTarget } from '../motion/setup';
 
 export function go(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
-  if (!href.startsWith('#')) return;
-  const el = document.querySelector(href);
-  if (!el) return;
+  if (!href.startsWith('#') || !document.querySelector(href)) return;
   e.preventDefault();
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  scrollToTarget(href === '#top' ? 0 : href, 1.4);
   history.replaceState(null, '', href);
 }
 

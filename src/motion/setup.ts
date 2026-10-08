@@ -1,6 +1,45 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/SplitText';
+import Lenis from 'lenis';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
-export { gsap, ScrollTrigger };
+export { gsap, ScrollTrigger, SplitText };
+
+export const reducedMotion = (): boolean =>
+  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+export const finePointer = (): boolean =>
+  typeof window !== 'undefined' && window.matchMedia('(pointer: fine)').matches;
+
+let lenis: Lenis | null = null;
+let tickerOn = false;
+
+/** Inertial wheel scrolling on desktop; touch keeps native scrolling. Off for reduced motion. */
+export function startSmoothScroll(): Lenis | null {
+  if (reducedMotion()) return null;
+  lenis?.destroy();
+  lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 0.9 });
+  lenis.on('scroll', ScrollTrigger.update);
+  if (!tickerOn) {
+    gsap.ticker.add((t) => lenis?.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+    tickerOn = true;
+  }
+  return lenis;
+}
+
+export function stopSmoothScroll() {
+  lenis?.destroy();
+  lenis = null;
+}
+
+export function scrollToTarget(target: string | number, duration = 1.4): void {
+  if (lenis) {
+    lenis.scrollTo(target as string | number, { duration, offset: -60, easing: (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2) });
+    return;
+  }
+  const y = typeof target === 'number' ? target : (document.querySelector(target)?.getBoundingClientRect().top ?? 0) + window.scrollY - 64;
+  window.scrollTo({ top: y, behavior: reducedMotion() ? 'auto' : 'smooth' });
+}

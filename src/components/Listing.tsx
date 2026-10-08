@@ -1,17 +1,14 @@
 import { useRef } from 'react';
-import { gsap } from '../motion/setup';
-import { useMotion, sel } from '../motion/useMotion';
+import { useMotion } from '../motion/useMotion';
+import { sectionLine, riseRows } from '../motion/reveals';
 import { news, publications } from '../content';
 
 function useRowsIn() {
   const ref = useRef<HTMLElement>(null);
   useMotion(ref, (mm, root) => {
-    const q = sel(root);
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.from(q('.item'), {
-        clipPath: 'inset(0 100% 0 0)', duration: 1.1, ease: 'expo.out', stagger: 0.08,
-        scrollTrigger: { trigger: root, start: 'top 78%' },
-      });
+      sectionLine(root);
+      riseRows(root, '.item');
     });
   });
   return ref;
@@ -21,6 +18,7 @@ export function Publications() {
   const ref = useRowsIn();
   return (
     <section id="publications" className="sec" ref={ref} aria-labelledby="pub-title">
+      <div className="wrap"><div className="sec__line" aria-hidden="true"><i /><b /></div></div>
       <div className="wrap sec__grid">
         <div className="sec__lab"><h2 id="pub-title" className="mono">Publications</h2></div>
         <ol className="items">
@@ -54,6 +52,7 @@ export function News() {
   if (news.length === 0) return null;
   return (
     <section id="news" className="sec" ref={ref} aria-labelledby="news-title">
+      <div className="wrap"><div className="sec__line" aria-hidden="true"><i /><b /></div></div>
       <div className="wrap sec__grid">
         <div className="sec__lab"><h2 id="news-title" className="mono">News</h2></div>
         <ul className="items">
