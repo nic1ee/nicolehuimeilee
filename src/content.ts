@@ -32,9 +32,11 @@ export const biography = [
  */
 export type Publication = { year: string; title: string; venue: string; href?: string };
 export const publications: Publication[] = [
-  { year: '2025', title: 'Connecting the World', venue: 'Space Capital' },
-  { year: '2024', title: 'Development of a Physics-Informed Neural Network to Enhance Wind Tunnel Data for Aerospace Design', venue: 'AIAA · Aerospace Research Central' },
-  { year: '2023', title: 'Reservoir Compaction Poroelastic Model', venue: 'Caltech GMG' },
+  { year: '2027', title: 'Electromechanical Modeling of Wearable NMES Electrodes in a Gravity-Loading Countermeasure Suit', venue: 'IEEE Aerospace Conference · Accepted' },
+  { year: '2026', title: 'Feasibility of a Wearable Neuromuscular Electrical Stimulation System as an Adjunct Exercise Countermeasure for Long-Duration Human Spaceflight', venue: 'International Conference on Environmental Systems', href: 'https://hdl.handle.net/2346/108983' },
+  { year: '2025', title: 'Connecting the World', venue: 'Space Capital Publications', href: 'https://www.spacecapital.com/publications/connecting-the-world' },
+  { year: '2024', title: 'Development of Machine Learning Tools for Aerospace Design: Wind Tunnel Investigations on a Speed Bump Model', venue: 'AIAA SciTech Forum', href: 'https://arc.aiaa.org/doi/10.2514/6.2023-0540.c1' },
+  { year: '2023', title: 'Reservoir Compaction Poroelastic Model', venue: 'Caltech Geomechanics and Mitigation of Geohazards', href: 'https://gmg.caltech.edu/research/funded-research' },
 ];
 
 /** News, newest first. `href` is optional. */
