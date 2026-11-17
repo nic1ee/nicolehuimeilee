@@ -17,7 +17,7 @@ export default function Header() {
           <a className="mono tlink hide-sm" href="#bio" onClick={(e) => go(e, '#bio')}>Biography</a>
           <a className="mono tlink hide-sm" href="#publications" onClick={(e) => go(e, '#publications')}>Publications</a>
           <a className="mono tlink hide-sm" href="#news" onClick={(e) => go(e, '#news')}>News</a>
-          <a className="mono tlink" href={person.cv} target="_blank" rel="noopener">CV</a>
+          <a className="mono tlink" href={person.cv} target="_blank" rel="noopener">Resume/CV</a>
           <a className="mono tlink" href="#contact" onClick={(e) => go(e, '#contact')}>Contact</a>
         </nav>
       </div>

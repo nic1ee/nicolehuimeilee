@@ -38,13 +38,13 @@ export default function Contact() {
       <div className="wrap"><div className="sec__line" aria-hidden="true"><i /><b /></div></div>
       <div className="wrap sec__grid">
         <div className="sec__lab">
-          <h2 id="contact-title" className="mono">CV &amp; Contact</h2>
+          <h2 id="contact-title" className="mono">Resume/CV &amp; Contact</h2>
         </div>
         <ul className="rows">
           <li className="row">
             <a className="row__a" href={person.cv} target="_blank" rel="noopener">
-              <span className="row__k mono muted">CV</span>
-              <span className="row__v serif"><span className="roll"><span>Curriculum vitae</span><span aria-hidden="true">Curriculum vitae</span></span></span>
+              <span className="row__k mono muted">Resume/CV</span>
+              <span className="row__v serif"><span className="roll"><span>Resume / Curriculum vitae</span><span aria-hidden="true">Resume / Curriculum vitae</span></span></span>
               <span className="row__x mono">PDF ↗</span>
             </a>
           </li>
