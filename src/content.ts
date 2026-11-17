@@ -43,5 +43,7 @@ export const publications: Publication[] = [
 /** News, newest first. `href` is optional. */
 export type NewsItem = { date: string; text: string; href?: string };
 export const news: NewsItem[] = [
+  { date: 'Nov 2026', text: 'Flew on a parabolic (reduced-gravity) flight' },
+  { date: 'Oct 2026', text: 'Named to the Payload Pioneers 2026, Payload’s 30 Under 30 for the space industry', href: 'https://payloadspace.com/nicole-huimei-lee-mit/' },
   { date: 'Sept 2026', text: 'Named an MIT Schwarzman College of Computing AI SERC Scholar' },
 ];
